@@ -1,6 +1,8 @@
 package main
 
 import (
+	"crypto/sha512"
+	"encoding/hex"
 	"fmt"
 	"strings"
 
@@ -17,17 +19,10 @@ var encrypted_blob_v2_with_tabs = []byte("U2FsdGVkX19Awib5AizWYvO2ZXAr4fkjRndvfQ
 
 func main() {
 	fmt.Println("Welcome to spaceship")
-	dtext, err := Decrypt(encrypted_blob_v1_no_tabs, _key, sitename)
-	if err != nil {
-		fmt.Println("decrypt error:", err)
-	}
-	fmt.Println("TADA!! PLAIN TEXT is :", dtext)
 
-	dtext, err = Decrypt(encrypted_blob_v2_with_tabs, _key, sitename)
-	if err != nil {
-		fmt.Println("decrypt error:", err)
-	}
-	fmt.Println("Early works:", dtext)
+	decrypt_and_check(encrypted_blob_v1_no_tabs, _key, sitename)
+	decrypt_and_check(encrypted_blob_v2_with_tabs, _key, sitename)
+
 }
 
 func Decrypt(encryptedblob []byte, key, siteurl string) (string, error) {
@@ -45,6 +40,17 @@ func Decrypt(encryptedblob []byte, key, siteurl string) (string, error) {
 	return string(dec[:offset]), nil
 }
 
-func decrypt_and_check() {
-	_ = strings.Split("", "")
+func decrypt_and_check(encryptedblob []byte, key, siteurl string) {
+
+	sha_512 := sha512.New()
+	sha_512.Write([]byte("-- tab separator --"))
+	sha := hex.EncodeToString(sha_512.Sum(nil))
+
+	alltext, err := Decrypt(encryptedblob, key, siteurl)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	tabs_texts := strings.Split(alltext, sha)
+	fmt.Printf("%+v", tabs_texts)
 }
