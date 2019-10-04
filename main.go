@@ -9,6 +9,11 @@ import (
 	"github.com/Luzifer/go-openssl"
 )
 
+/*
+U2FsdGVkX18dxxiSqrx20vviRVGoS3ltOMuTjmn5tJCB37KAtXsTglA11cyIO42mCHplTkvZPU/odoaPP10b7haNJM2JSYLuyUQnRwyxbwyqGFHPaqM2C9AyVnuqOKPxuSuzwmnYan1uGTnRSKL3DLFUt0vrXk4lZWyKWckQ5LZTvu/PKjjZOFEpjBGDyStFPhn0I9Xpe7P9ed2HjDN/DOcknVOTwvKzeplVdnYBBZ0=
+
+*/
+
 // https://www.protectedtext.com/unique_12
 var _key = "unique_12"
 var sitename = "/unique_12"
@@ -23,34 +28,68 @@ func main() {
 	decrypt_and_check(encrypted_blob_v1_no_tabs, _key, sitename)
 	decrypt_and_check(encrypted_blob_v2_with_tabs, _key, sitename)
 
+	attach_and_encrypt([]string{"this is unique", "vvvvvvvvvv"}, _key, sitename)
 }
 
-func Decrypt(encryptedblob []byte, key, siteurl string) (string, error) {
+func decrypt(encryptedblob []byte, key, siteurl string) ([]byte, error) {
 	o := openssl.New()
-	dec, err := o.DecryptBytes(key, encryptedblob, openssl.DigestMD5Sum)
-	if err != nil {
-		return "", err
-	}
-	// 128 cz sha512 is 64bit and convering byte into hexstring (8 => 16)
-	// makes 64 128
-	// siteurl hash is padded at the last to check correctness or sth SO
-	// TODO actually check the correctness
-	offset := (len(dec) - 128)
-
-	return string(dec[:offset]), nil
+	return o.DecryptBytes(key, encryptedblob, openssl.DigestMD5Sum)
 }
 
 func decrypt_and_check(encryptedblob []byte, key, siteurl string) {
 
-	sha_512 := sha512.New()
-	sha_512.Write([]byte("-- tab separator --"))
-	sha := hex.EncodeToString(sha_512.Sum(nil))
-
-	alltext, err := Decrypt(encryptedblob, key, siteurl)
+	tailedtext_byte, err := decrypt(encryptedblob, key, siteurl)
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
-	tabs_texts := strings.Split(alltext, sha)
-	fmt.Printf("%+v", tabs_texts)
+
+	// 128 cz sha512 is 64bit and convering byte into hexstring (8 => 16)
+	// makes 64 128
+	// siteurl hash is padded at the last to check correctness or sth SO
+	// TODO actually check the correctness
+	offset := (len(tailedtext_byte) - 128)
+	text := string(tailedtext_byte[:offset])
+
+	//fmt.Println(text)
+
+	tabs_texts := strings.Split(text, seperator())
+	fmt.Printf("%+v \n", tabs_texts)
+}
+
+func encrypt(plaintext []byte, password string) ([]byte, error) {
+	o := openssl.New()
+	return o.EncryptBytes(password, plaintext, openssl.DigestMD5Sum)
+}
+
+func attach_and_encrypt(plaintext []string, password string, siteurl string) ([]byte, error) {
+
+	// should use buffer instead
+	var concatinatedtext strings.Builder
+	//buf := new(bytes.Buffer)
+
+	for n, pertabtext := range plaintext {
+
+		concatinatedtext.WriteString(pertabtext)
+		//buf.Write( []byte(pertabtext))
+
+		if n == (len(plaintext) - 1) {
+			concatinatedtext.WriteString(sha_me(siteurl))
+		} else {
+			concatinatedtext.WriteString(seperator())
+		}
+
+	}
+	//fmt.Printf("%+v \n", concatinatedtext.String())
+	return encrypt([]byte(concatinatedtext.String()), password)
+}
+
+func seperator() string {
+	return sha_me("-- tab separator --")
+}
+
+func sha_me(text string) string {
+	sha_512 := sha512.New()
+	sha_512.Write([]byte(text))
+	return hex.EncodeToString(sha_512.Sum(nil))
 }
