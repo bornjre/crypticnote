@@ -1,0 +1,498 @@
+/* loading... */
+#loadingtext {
+    text-align: center;
+    margin-top: 200px;
+    font-style: italic;
+    font-size: 20px;
+    color: #a4bbe3;
+}
+.displaynone {
+    display: none;
+}
+
+* {
+    text-shadow: none;
+}
+
+#main-content-outter {
+    background-color: #ebf0fa;
+}
+
+/* menubar */
+#menubar {
+    background-color: #043c6b;
+}
+#logo-img {
+    height: 30px;
+}
+#menubar-buttons {
+    padding: 3px 0px;
+}
+#menubar-buttons button, #menubar-buttons>a {
+    float: right;
+    margin: 1px 2px;
+    font-size: 12px;
+}
+
+/* positioning textarea */
+#main-content-outter {
+}
+#main-content-outter > div {
+    height: 100%;
+}
+#main-content-outter > div > div {
+    height: 100%;
+}
+#tabs div textarea.textarea-contents {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box; /* for IE and modern versions of Chrome */
+    -moz-box-sizing: border-box; /* for Firefox */
+    -webkit-box-sizing: border-box;
+    resize: none;
+    font-family: monospace;
+    border-top-left-radius: 0;
+    margin-bottom: 0;
+    overflow-x: hidden;
+}
+
+/* tabs */
+#tabs {
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: transparent;
+    height: 100%;
+}
+#tabs ul.ui-tabs-nav {
+    margin: 0;
+    padding: 8px 0 0 0;
+    border: none;
+    background: transparent;
+    font-size: 0.8em;
+}
+#tabs li {
+    border-color: #ccc;
+    overflow: hidden;
+}
+#tabs li.ui-tabs-active, #tabs li.ui-state-active {
+    background: #fff;
+    border-color: #aaa;
+    -moz-box-shadow: 0 -1px 2px rgba(0,0,0,.15);
+    -webkit-box-shadow: 0 -1px 2px rgba(0,0,0,.15);
+    box-shadow: 0 -1px 2px rgba(0,0,0,.15);
+}
+#tabs li a.ui-tabs-anchor {
+    padding: .2em 1em;
+}
+#tabs div {
+    padding: 0px;
+}
+#tabs li .ui-icon-close {/* close icon */
+    float: left;
+    margin: 0.2em 0.2em -25px 0;
+    cursor: pointer;
+    background-image: url(custom-theme/images/ui-icons_blue_256x240.png);
+}
+#add_tab {/* 'plus' button for adding new tabs */
+    border-radius: 4px;
+    margin: 3px;
+    border-color: #aaa;
+}
+#add_tab .ui-button-text {
+    padding: 0em 0.4em 0.2em 0.4em;
+    font-weight: bold;
+}
+
+/* dialogs */
+.dialog-site-name {
+    text-align: center;
+    font-size: 120%;
+    font-weight: bold;
+}
+.no-close .ui-dialog-titlebar-close {
+    display: none;
+}
+
+#dialog-site-modified .comment, #dialog-new-password .comment {
+    color: #ddd;
+    font-size: 90%;
+}
+#dialog-new-password .comment, #dialog-password .comment {
+    font-style: italic;
+}
+#passwords-dont-match, #passwords-empty {
+    font-style: italic;
+    color: #ff0000; /* error color */
+}
+.additional-text {
+    display: none;
+}
+.show-additional-text .additional-text {
+    display: inherit;
+}
+.ui-dialog .ui-dialog-buttonset button {/* force button text in dialogs to be black */
+    color: #000;
+}
+
+#loader img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -17px; /* -1 * image width / 2 */
+    margin-top: -17px; /* -1 * image height / 2 */
+    display: block;
+}
+
+/* toast messages */
+#outer-toast {
+    position: absolute;
+    top: 100px;
+    width: 100%;
+    text-align: center;
+    display: none;
+    z-index: 101;
+}
+#toast {
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 10px;
+    z-index: 101;
+    font-weight: bold;
+    background-color: #333;
+    color: #ddd;
+    opacity: 0.8;
+}
+
+/* --- homepage specific css --- */
+
+#logo-big-img {
+    width: 450px;
+}
+
+#homepage-first-div {
+    padding-top: 120px;
+    padding-bottom: 15px;
+    background-color: #043c6b;
+}
+#slogan {
+    color: #dbe4f4;
+    font-family: sans-serif;
+    font-size: 24px;
+    font-style: italic;
+    margin-top: 40px;
+    text-align: center;
+    line-height: 27px;
+}
+#slogan, #homepage-first-list {
+    margin-bottom: 100px;
+}
+#homepage-first-list {
+    margin-top: 10px;
+    color: #a4bbe3;
+    font-size: 16px;
+}
+#homepage-first-list {
+    list-style-type: disc;
+    margin-left: 10px;
+}
+#homepage-first-list li {
+    line-height: 140%;
+    margin-bottom: 20px;
+}
+#homepage-first-list li span {
+    color: #dbe4f4;
+}
+#new-features-about {
+    font-size: 16px;
+    color: #f3ef87;
+    padding-top: 30px; /* was 85px*/
+}
+#new-features-about div {
+    float: right;
+}
+#new-features-about p {
+    text-align: right;
+    cursor: pointer;
+}
+#star-icon {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    padding-right: 2px;
+}
+#homepage-button-div {
+    color: #dbe4f4;
+    font-size: 16px;
+    text-align: center;
+}
+#homepage-button-div form, #homepage-button-div input {
+    display: inline;
+}
+#homepage-button-div button {
+    font-size: 13px;
+}
+#homepage-button-div .softColor {
+    color: #a4bbe3;
+}
+span.monospace-text {
+    font-family: monospace;
+}
+#siteToVisit {
+    font-weight: bold;
+    color: #0B5FA5;
+    width: 150px;
+    padding: 5px 4px 7px 4px; /* fix for aligning with 'Go' button */
+}
+
+#homepage-third-div {
+    padding-top: 50px;
+    padding-bottom: 10px;
+    background-color: #043c6b;
+    color: #a4bbe3;
+    text-align: center;
+    font-size: 90%;
+}
+#contact-us-email {
+    color: #dbe4f4;
+    font-style: italic;
+}
+.homepage-hline-darker {
+    background-color: #a4bbe3;
+    padding-top: 7px;
+}
+.homepage-hline-lighter {
+    background-color: #dbe4f4;
+    padding-top: 7px;
+}
+
+#homepage-second-div {
+    margin-top: 30px;
+    margin-bottom: 5px;
+    color: #043c6b;
+}
+#homepage-second-div ul {
+    list-style-type: none;
+}
+#homepage-second-div h2, #homepage-second-div h3 {
+    padding-left: 41px;
+    padding-bottom: 10px;
+    color: #043c6b;
+    font-family: sans-serif;
+}
+#homepage-second-div h3 {
+    margin-top: 40px;
+    font-size: 24px;
+}
+#homepage-second-div h2 {
+    margin-top: 45px;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+#homepage-second-div ul li {
+    background: url(/img/small-key.png) no-repeat left center;
+    /*list-style-image:url(/img/small-key.png) left top;*/
+    padding: 6px 0px 4px 43px;
+    font-size: 90%;
+}
+#homepage-second-div #homepage-seo-text li {
+    background: initial;
+    padding: 6px 0px 4px 0px;
+}
+
+#homepage-second-div ul li a {
+    font-weight: bold;
+    font-style: italic;
+    color: #043c6b;
+}
+#homepage-second-div ul li span {
+    font-weight: bold;
+}
+#homepage-second-div ul li span.italic {
+    font-weight: normal;
+    font-style: italic;
+}
+#homepage-second-div ul li span.comment {
+    font-weight: normal;
+    font-style: italic;
+	padding-left: 50px;
+	display: inline-block;
+}
+#donate-heart {
+    background-image: url(custom-theme/images/ui-icons_a83300_256x240.png);
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+}
+#homepage-second-div #donate-outter-span {
+    cursor: pointer;
+    font-weight: normal;
+    color: #a83300;
+}
+#dialog-donation {
+    font-size: 0.9em;
+    padding-top: 20px;
+}
+#dialog-donation-never {
+    font-weight: bold;
+    color: #a4bbe3;
+}
+#dialog-donation-parentheses {
+    font-style: italic;
+    color: #dbe4f4;
+}
+#dialog-donation-address {
+    font-style: italic;
+    color: #dbe4f4;
+    text-align: center;
+    font-size: 0.9em; 
+}
+#show-more, #show-less {
+    color: #043c6b;
+    font-weight: bold;
+}
+.faq-question {
+    font-weight: bold;
+    font-style: italic;
+}
+span.bold-span {
+    font-weight: bold;
+    font-style: normal;
+}
+span.italic-span {
+    font-weight: normal;
+    font-style: italic;
+}
+span.bold-italic-span {
+    font-weight: bold;
+    font-style: italic;
+}
+.faq-question a, .faq-answer a {
+    color: #043c6b;
+}
+
+#img-explanation {
+    padding-top: 20px;
+    width: 100%;
+}
+
+#sharing-instruction {
+    float: right;
+}
+#sharing-instruction p {
+    padding: 0 18px;
+    font-style: italic;
+    cursor: pointer;
+}
+#soc-buttons img {
+    cursor: pointer;
+}
+#soc-buttons {
+    float: right;
+    clear: right;
+}
+
+.android-app-promo {
+    padding-top: 50px;
+    padding-bottom: 10px;
+}
+.android-app-icon {
+    height: 28px;
+    padding-right: 5px;
+}
+
+
+
+/* #Media Queries
+ ================================================== */
+
+/* Smaller than standard 960 (devices and browsers) */
+@media only screen and (max-width: 959px) {
+}
+
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+    #logo-big-img {
+        width: 400px;
+    }
+}
+
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width: 767px) {
+    #logo-big-img {
+        width: 300px;
+    }
+    #homepage-first-div {
+        padding-top: 10px;
+        padding-bottom: 20px;
+    }
+    #homepage-first-list {
+        margin-bottom: 40px;
+    }
+    #slogan {
+        margin-top: 10px;
+        margin-bottom: 30px;
+    }
+    #homepage-second-div h3 {
+        margin-top: 20px;
+    }
+    #homepage-second-div h2 {
+        margin-top: 30px;
+    }
+    .android-app-promo {
+        padding-top: 10px;
+    }
+}
+
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+}
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 479px) {
+    #menubar .ui-button-text-only .ui-button-text {
+        padding: .2em .4em;
+    }
+    /*#menubar-buttons { padding: 0 0 1px 0; }*/
+    /*#menubar-buttons button { margin: 0 2px; font-size: 11px; }*/
+    #logo-img-div {
+        height: 16px;
+    }
+    #logo-img {
+        height: 15px;
+    }
+    #tabs ul.ui-tabs-nav {
+        padding: 1px 0 0 0;
+    }
+    #tabs ul li {
+        font-size: 0.9em;
+    }
+    #tabs li .ui-icon-close {
+        margin: 0em 0.1em -25px 0;
+    }
+    #tabs li a.ui-tabs-anchor {
+        padding: .1em 0.8em;
+        line-height: 1.3em;
+    }
+    #add_tab {
+        margin: 0;
+        font-size: 0.8em;
+    }
+    #add_tab .ui-button-text {
+        padding: 0em 0.7em 0.2em 0.7em;
+    }
+    #siteToVisit {
+        margin-left: 40px;
+    }
+    #button-go {
+        margin-right: 40px;
+    }
+    .android-app-icon {
+        height: 24px;
+        padding-right: 3px;
+    }
+
+
+}
+
