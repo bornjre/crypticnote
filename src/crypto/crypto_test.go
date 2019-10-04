@@ -15,5 +15,10 @@ func Test_crypto(t *testing.T) {
 
 	decrypt_and_check(encrypted_blob_v1_no_tabs, _key, sitename)
 	decrypt_and_check(encrypted_blob_v2_with_tabs, _key, sitename)
-	attach_and_encrypt([]string{"this is unique", "vvvvvvvvvv"}, _key, sitename)
+	etext, err := attach_and_encrypt([]string{"this is unique", "vvvvvvvvvv"}, _key, sitename)
+	if err != nil {
+		t.Fatal(err)
+	}
+	decrypt_and_check(etext, _key, sitename)
+
 }
