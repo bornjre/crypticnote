@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	fmt.Println("Welcome to spaceship")
+	fmt.Println("Welcome to spaceship ")
 }
