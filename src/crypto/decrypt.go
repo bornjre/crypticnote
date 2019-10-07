@@ -41,5 +41,8 @@ func (d *Decryptor) strip_seperator() {
 	offset := (len(d.plaintext_with_seperator) - 128)
 	text := string(d.plaintext_with_seperator[:offset])
 
+	//fmt.Println("FULL:", string(d.plaintext_with_seperator))
+	//fmt.Println("Stripping:", string(d.plaintext_with_seperator[offset:]))
+
 	d.plaintexts = strings.Split(text, tabSeperator())
 }

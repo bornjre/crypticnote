@@ -38,9 +38,9 @@ func (e *Encryptor) padtext() {
 
 		stringbuf.WriteString(tab_text)
 		if n == (len(e.plaintexts) - 1) {
+			e.paddedtext_tabonly = stringbuf.String()
 			stringbuf.WriteString(sha(e.ctx.Siteurl))
 		} else {
-			e.paddedtext_tabonly = stringbuf.String()
 			stringbuf.WriteString(tabSeperator())
 		}
 	}

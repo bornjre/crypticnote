@@ -10,10 +10,11 @@ func tabSeperator() string {
 }
 
 func validityHash(content, password string) string {
-	DBVersion := 2
+	//fmt.Println("CALCULATING FOR:", content)
+	DBVersion := "2"
 	pass_sha := sha(password)
 	total_sha := sha(content + pass_sha)
-	return total_sha + string(DBVersion)
+	return total_sha + DBVersion
 }
 
 func sha(text string) string {
