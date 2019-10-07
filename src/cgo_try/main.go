@@ -1,20 +1,28 @@
 package main
 
-//extern void Callme();
+// #cgo pkg-config: gtk+-2.0
+//extern void mainloop();
 import "C"
 
 import (
 	"fmt"
+	"sync"
 )
 
 func main() {
-	fmt.Println("Inside go world")
-	C.Callme()
+	fmt.Println("<GO> Starting clipboard watch service")
+	
+	var wg sync.WaitGroup
+	wg.Add(1)
+	go C.mainloop()
+	wg.Wait()
+
 }
 
 
 //export callback
-func callback() {
-	fmt.Println("callback called in go world")
+func callback(str *C.char) {
+	fmt.Println("<GO> copy event")
+	fmt.Println(C.GoString(str))
 }
 
