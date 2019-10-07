@@ -1,1 +1,9 @@
-package watch
+package main
+
+func Clipboard() {
+
+}
+
+func main() {
+
+}
