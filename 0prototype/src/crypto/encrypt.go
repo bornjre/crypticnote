@@ -25,9 +25,12 @@ func NewEncryptor(plaintexts []string, ctx *CryptoCtx) *Encryptor {
 func (e *Encryptor) Process() error {
 	e.padtext()
 	ciper, err := e.encrypt()
+	if err != nil {
+		return err
+	}
 	e.ciperText = string(ciper)
 	e.calculate_validity_hash()
-	return err
+	return nil
 }
 
 func (e *Encryptor) padtext() {
