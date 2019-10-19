@@ -7,7 +7,7 @@ type Service interface {
 
 type Sink interface {
 	Service
-	SetPushChan(<-chan string)
+	GetPushChan() chan<- string
 }
 
 type Watch interface {

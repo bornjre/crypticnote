@@ -11,15 +11,13 @@ type App struct {
 	sinks  []core.Sink
 	watchs []core.Watch
 	in     chan string
-	out    chan string
 }
 
 type Option func(*App)
 
 func NewApp(opts ...Option) *App {
 	a := &App{
-		in:  make(chan string),
-		out: make(chan string),
+		in: make(chan string),
 	}
 	for _, opt := range opts {
 		opt(a)
