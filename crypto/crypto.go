@@ -4,7 +4,7 @@ import "fmt"
 
 func Encrypt(siteurl, password string, plaintext []string) (string, string) {
 
-	ecptr := NewEncryptor(siteurl, password, plaintext)
+	ecptr := NewEncryptor("/"+siteurl, password, plaintext)
 	err := ecptr.Process()
 	if err != nil {
 		fmt.Println(err)

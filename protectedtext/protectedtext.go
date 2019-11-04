@@ -29,7 +29,7 @@ func NewProtectedText() *ProtectedText {
 	p := &ProtectedText{
 		counter:      0,
 		metaPassword: "somethinghard",
-		metaUrl:      "unique231",
+		metaUrl:      "unique233",
 		plock:        &sync.Mutex{},
 		//networkQueue: &queue{},
 		in: make(chan string),
